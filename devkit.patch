@@ -1,0 +1,76 @@
+Setup Mise and improve README
+
+From: stephane-klein <contact@stephane-klein.info>
+
+
+---
+ .mise.toml         |    2 ++
+ README.sklein.md   |    7 +++++++
+ backend/.gitignore |    3 ++-
+ backend/.mise.toml |    5 +++++
+ backend/README.md  |    9 +++++++++
+ 5 files changed, 25 insertions(+), 1 deletion(-)
+ create mode 100644 .mise.toml
+ create mode 100644 README.sklein.md
+ create mode 100644 backend/.mise.toml
+ create mode 100644 backend/README.md
+
+diff --git a/.mise.toml b/.mise.toml
+new file mode 100644
+index 000000000..3ffd2798a
+--- /dev/null
++++ b/.mise.toml
+@@ -0,0 +1,2 @@
++[tools]
++node="22.15.0"
+diff --git a/README.sklein.md b/README.sklein.md
+new file mode 100644
+index 000000000..2afcbf25f
+--- /dev/null
++++ b/README.sklein.md
+@@ -0,0 +1,7 @@
++# Getting started
++
++Before using the *OpenWebUI* frontend, you need to start the backend. Follow [`backend/README.md`](backend/README.md) to get started.
++
++```sh
++$ mise install
++```
+diff --git a/backend/.gitignore b/backend/.gitignore
+index 614a5f746..e7c65f15b 100644
+--- a/backend/.gitignore
++++ b/backend/.gitignore
+@@ -9,4 +9,5 @@ Pipfile
+ !/data
+ /data/*
+ /open_webui/data/*
+-.webui_secret_key
+\ No newline at end of file
++.webui_secret_key
+++.venv
+diff --git a/backend/.mise.toml b/backend/.mise.toml
+new file mode 100644
+index 000000000..5ae652115
+--- /dev/null
++++ b/backend/.mise.toml
+@@ -0,0 +1,5 @@
++[tools]
++python="3.11.11"
++
++[env]
++_.python.venv = { path = ".venv", create = true }
+diff --git a/backend/README.md b/backend/README.md
+new file mode 100644
+index 000000000..378237617
+--- /dev/null
++++ b/backend/README.md
+@@ -0,0 +1,9 @@
++```sh
++$ mise install
++$ pip install -r requirements.txt # Warning, 7.5GB of disk space used after installation
++$ ./dev.sh
++INFO:     Will watch for changes in these directories: ['/home/stephane/git/github.com/stephane-klein/albert-conversation-sklein-patchs/upstream/backend']
++INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
++INFO:     Started reloader process [170043] using WatchFiles
++...
++```
